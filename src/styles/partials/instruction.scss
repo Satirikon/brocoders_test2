@@ -1,0 +1,109 @@
+@import "../media";
+
+.instruction {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: #65CFCF;
+  color: #ffffff;
+  @include respond-to(phonePortrait, phoneLandscape, tabletPortrait) {
+    flex-direction: column;
+  }
+
+  .left-col {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    font: bold 80px "Maven Pro Black";
+    padding-left: 5%;
+    padding-top: 5%;
+    @include respond-to(phonePortrait, phoneLandscape, tabletPortrait) {
+      width: 100%;
+      font-size: 35px;
+      align-items: center;
+    }
+    .btn {
+      background: rgba(0, 0, 0, 0);
+      width: 300px;
+      height: 70px;
+      outline: none;
+      color: #ffffff;
+      border: #ffffff solid;
+      border-width: 1px 2px;
+      border-radius: 6px;
+      margin-top: 10%;
+      font: bold 18px "Maven Pro Regular";
+    }
+  }
+
+  .right-col {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+
+    .item-all {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      position: relative;
+      width: 100%;
+      min-height: 185px;
+      .connection-arrow {
+        position: absolute;
+        right: 0;
+        top: 25px;
+        z-index: 1;
+        @include respond-to(phonePortrait, phoneLandscape, tabletPortrait, tabletLandscape) {
+          display: none;
+        }
+        &.arrow-left {
+          right: initial;
+          transform: scaleX(-1);
+          left: 0;
+        }
+      }
+
+      .item {
+        display: flex;
+        flex-direction: column;
+        min-width: 400px;
+        @include respond-to(phonePortrait) {
+          min-width: 375px;
+        }
+        &.right {
+          .item-header {
+            justify-content: flex-end;
+          }
+          .item-text {
+            justify-content: flex-end;
+            text-align: right;
+            padding-left: 0;
+            padding-right: 80px;
+          }
+        }
+
+        .item-header {
+          display: flex;
+          align-items: center;
+          font: bold 22px "Maven Pro Regular";
+
+          .icon {
+            margin: 0 15px;
+            width: 50px;
+            display: flex;
+          }
+        }
+
+        .item-text {
+          padding-left: 80px;
+          display: flex;
+          flex-direction: column;
+          font: 16px "Maven Pro Bold";
+        }
+      }
+    }
+  }
+}

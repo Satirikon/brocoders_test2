@@ -1,0 +1,38 @@
+$respond-to-breakpoints: (
+        phonePortrait: '(max-width: 479px)',
+        phoneLandscape: '(min-width: 480px) and (max-width: 767px)',
+        tabletPortrait: '(min-width: 768px) and (max-width: 979px)',
+        tabletLandscape: '(min-width: 980px) and (max-width: 1200px)',
+        desktop: '(min-width: 1201px)'
+);
+$respond-to-no-mediaqueries-fallback: phonePortrait;
+$respond-to-fallback-class: lt-ie9;
+
+@mixin respond-to($medias...) {
+  $breakpoints-length: length($respond-to-breakpoints);
+
+  @each $media in $medias {
+    $had-a-hit: false;
+
+    @for $i from 1 through $breakpoints-length {
+      $breakpoint: nth($respond-to-breakpoints, $i);
+      @if $media == nth($breakpoint, 1) {
+        $definition: nth($breakpoint, 2);
+        $had-a-hit: true;
+        @media #{$definition} {
+          @content;
+        }
+      }
+    }
+
+    @if $media == $respond-to-no-mediaqueries-fallback {
+      .#{$respond-to-fallback-class} & {
+        @content;
+      }
+    }
+
+    @if $had-a-hit == false {
+      @warn "Media #{media} not found!";
+    }
+  }
+}

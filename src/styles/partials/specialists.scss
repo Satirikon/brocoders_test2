@@ -1,0 +1,50 @@
+@import '../media';
+
+.specialists {
+  text-align: center;
+  font: bold 36px 'Maven Pro Black', serif;
+  color: rgb(11, 42, 55);
+  flex-direction: column;
+  margin: 100px 0 130px 0;
+
+  .content {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    .column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      width: 25%;
+      margin-top: 40px;
+      .service-type {
+        display: flex;
+        flex-direction: column;
+        &.middle {
+          font: bold 22px 'Maven Pro Regular';
+          margin: 40px 0 20px 0;
+          flex-grow: 1
+        }
+
+        &.small {
+          font: 16px 'Maven Pro Bold';
+        }
+      }
+    }
+
+    @include respond-to(phonePortrait, phoneLandscape) {
+      flex-direction: column;
+      .column {
+        width: 100%;
+      }
+    }
+  }
+}
+
+
+
+
+
+

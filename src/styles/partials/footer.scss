@@ -1,0 +1,77 @@
+@import '../media';
+
+.footer {
+  background-color: #0B2A37;
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 80px 20px 90px 20px;
+  color: white;
+
+  @include respond-to(phonePortrait, phoneLandscape) {
+    flex-direction: column;
+  }
+
+  .social {
+    display: flex;
+    flex-direction: column;
+    font: bold 22px "Maven Pro Regular";
+    padding-top: 20px;
+    .footer-logo{
+      width: 200px;
+      align-self: center;
+    }
+    .icons {
+      display: flex;
+      flex-direction: row;
+      margin-top: 5%;
+      @include respond-to(phonePortrait, phoneLandscape) {
+        justify-content: center;
+      }
+      .social-icons {
+        width: 20px;
+        height: 20px;
+        margin-left: 5%;
+      }
+    }
+    .social-text {
+      font: 14px "Maven Pro Bold";
+      color: #85959B;
+      @include respond-to(phonePortrait, phoneLandscape) {
+        text-align: center;
+      }
+    }
+  }
+
+  .contacts {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row-reverse;
+    .footer-col {
+      display: flex;
+      flex-direction: column;
+      font: 16px "Maven Pro Bold";
+      color: #85959B;
+      width: 22%;
+
+      .title-footer {
+        font: bold 22px "Maven Pro Regular";
+        color: #ffffff;
+        margin-bottom: 10px;
+      }
+      .contacts-item {
+        margin-bottom: 10px;
+      }
+    }
+
+    @include respond-to(phonePortrait, phoneLandscape) {
+      flex-direction: column;
+      width: 100%;
+      .footer-col {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 15px;
+      }
+    }
+  }
+}

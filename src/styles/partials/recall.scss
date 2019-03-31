@@ -1,0 +1,55 @@
+@import "../media";
+
+.recall-section {
+  flex-direction: column;
+  height: auto;
+  align-items: center;
+  margin-bottom: 90px;
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    @include respond-to(phonePortrait, phoneLandscape) {
+      flex-direction: column;
+    }
+    .recall {
+      display: flex;
+      flex-direction: column;
+      margin: 60px 2px 0 2px;
+      .recall-text {
+        background-color: rgb(223, 240, 240);
+        border: rgb(223, 240, 240) 10px solid;
+        font: 16px "Maven Pro Bold";
+      }
+      .recall-user {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        margin-top: 15px;
+        font: 16px "Maven Pro Bold";
+        .user-cred {
+          display: flex;
+          flex-direction: column;
+          text-align: right;
+          margin-right: 10px;
+          .age {
+            font: 16px "Maven Pro Black";
+          }
+          .avatar {
+            width: 50px;
+            height: 50px;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+

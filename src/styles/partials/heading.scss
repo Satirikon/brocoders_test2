@@ -1,0 +1,134 @@
+@import "../media";
+
+.heading-section {
+  display: flex;
+  position: relative;
+  flex-grow: 1;
+  flex-direction: row;
+  width: 100%;
+
+  .heading-image {
+    width: 100%;
+  }
+
+  .heading-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    .header {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      padding: 10px;
+      align-items: center;
+      justify-content: space-between;
+      font: 16px "Maven Pro";
+      color: #ffffff;
+      .header-img {
+        margin-right: 15px;
+      }
+
+      .part {
+        display: flex;
+        align-items: center;
+      }
+
+      .btn {
+        background: rgba(0, 0, 0, 0);
+        width: 100px;
+        height: 36px;
+        margin: 0 3px;
+        border: none;
+        color: #ffffff;
+        outline: none;
+        @include respond-to(phonePortrait, phoneLandscape, tabletPortrait) {
+          &.menu {
+            width: 40px;
+            .menu-text {
+              display: none;
+            }
+          }
+          &:not(.menu) {
+            display: none;
+          }
+        }
+
+        &.left {
+          border: #ffffff solid;
+          border-width: 1px 2px;
+          border-radius: 6px;
+          font: 16px "Maven Pro Bold";
+          color: #ffffff;
+        }
+        &.help {
+          width: 120px;
+        }
+        span {
+          font: 20px "Maven Pro Bold";
+        }
+        .menu {
+          top: 50%;
+        }
+      }
+    }
+
+    .heading-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 0;
+      height: 100%;
+      .search_btn {
+        border: rgb(255, 81, 81) solid;
+        border-radius: 6px;
+        background-color: rgb(255, 81, 81);
+        left: 598px;
+        top: 536px;
+        width: 274px;
+        height: 70px;
+        z-index: 177;
+        align-self: center;
+        font: 18px "Maven Pro Bold"
+      }
+
+      .heading-content-item {
+        margin: 10px 0;
+        text-align: center;
+      }
+      .big {
+        font: bold 80px "Maven Pro Black";
+        color: aquamarine;
+        @include respond-to(phonePortrait, phoneLandscape) {
+            font: bold 50px "Maven Pro Black";
+          }
+      }
+      .medium {
+        font: bold 58px "Maven Pro Black";
+        color: #ffffff;
+        @include respond-to(phonePortrait, phoneLandscape) {
+          font: bold 35px "Maven Pro Black";
+        }
+      }
+      .small {
+        font: 24px "Maven Pro Bold";
+        color: #ffffff;
+        text-align: center;
+        @include respond-to(phonePortrait, phoneLandscape) {
+          font: 16px "Maven Pro Bold";
+        }
+        span {
+          font: bold 26px "Maven Pro Regular";
+          color: aquamarine;
+          @include respond-to(phonePortrait, phoneLandscape) {
+            font: bold 18px "Maven Pro Regular"
+          }
+        }
+      }
+    }
+  }
+}
