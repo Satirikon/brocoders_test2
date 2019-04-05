@@ -1,18 +1,19 @@
 @import "../media";
 
 .advantages {
-  background: #025173 url('../../img/advantages_flow.png') no-repeat bottom;
+  background: #025173 url('../../img/advantages_flow.png') no-repeat bottom right;
   display: flex;
   flex-direction: row;
   padding: 160px 0;
 
-  @include respond-to(phonePortrait, phoneLandscape) {
+  @include respond-to(phonePortrait, phoneLandscape, tabletPortrait) {
     flex-direction: column;
     background-size: contain;
+    padding: 50px 0;
   }
 
   .list {
-    margin: 0 10%;
+    margin: 0 10px;
     display: flex;
     flex-direction: column;
     .pointer {
@@ -20,26 +21,27 @@
       size: 5px;
       color: aquamarine;
       border-color: aquamarine;
-      margin-bottom: 2%;
+      margin: 0 0 10px 0;
     }
     .paragraph {
-      font: 16px "Maven Pro Bold";
+      font-size: 16px;
       color: #ffffff;
-      margin-bottom: 5%;
+      margin-bottom: 23px;
+    }
+    @include respond-to(tabletLandscape, desktop) {
+      margin: 0 150px;
     }
   }
 
   .interactive {
     display: flex;
     flex-direction: column;
-    font: bold 80px "Maven Pro Black";
-    @include respond-to(phonePortrait, phoneLandscape) {
-      font: bold 50px "Maven Pro Black";
-    }
+    font-weight: 900;
+    font-size: 80px;
+    padding: 50px 0;
     color: #ffffff;
-    padding: 7% 15%;
     .interactive-text {
-      padding-bottom: 10%;
+      padding-bottom: 25px;
     }
     .advantages-btn {
       background: rgba(0, 0, 0, 0);
@@ -51,7 +53,22 @@
       border: #ffffff solid;
       border-width: 1px 2px;
       border-radius: 6px;
-      font: bold 18px "Maven Pro Regular";
+      font-weight: 700;
+      font-size: 18px;
+      &:hover {
+        background-color: rgba(255, 255, 255, .3);
+        transition: 1.5s background-color;
+      }
+    }
+    @include respond-to(tabletLandscape, desktop) {
+      padding: 100px 50px 100px 0;
+    }
+    @include respond-to(phonePortrait, phoneLandscape, tabletPortrait) {
+      text-align: center;
+      align-items: center;
+      padding-top: 50px;
+      font-weight: 900;
+      font-size: 50px;
     }
   }
 }

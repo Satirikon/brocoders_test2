@@ -1,15 +1,11 @@
 @import "../media";
 
 .heading-section {
-  display: flex;
   position: relative;
+  display: flex;
   flex-grow: 1;
   flex-direction: row;
   width: 100%;
-
-  .heading-image {
-    width: 100%;
-  }
 
   .heading-content-wrapper {
     display: flex;
@@ -17,19 +13,30 @@
     align-items: center;
     position: absolute;
     width: 100%;
-    height: 100%;
+    top:0;
+    left:0;
+    bottom:0;
 
     .header {
       display: flex;
+      position: fixed;
+      background-color: rgba(0, 0, 0, 0);
+      z-index: 1;
       flex-wrap: wrap;
       width: 100%;
       padding: 10px;
       align-items: center;
       justify-content: space-between;
-      font: 16px "Maven Pro";
       color: #ffffff;
+      &.header-scrolled{
+        background-color: rgba(0, 0, 0, 0.3);
+      }
+
       .header-img {
         margin-right: 15px;
+        @include respond-to(phonePortrait, phoneLandscape, tabletPortrait) {
+          max-width: 150px;
+        }
       }
 
       .part {
@@ -38,16 +45,59 @@
       }
 
       .btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         background: rgba(0, 0, 0, 0);
-        width: 100px;
-        height: 36px;
-        margin: 0 3px;
+        min-width: 100px;
+        min-height: 36px;
+        margin: 0 10px;
         border: none;
         color: #ffffff;
         outline: none;
+        font-size: 16px;
+        padding: 0 5px;
+        border-radius: 10px;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, .3);
+          transition: 1.5s background-color;
+        }
+
+        &.left {
+          border: #ffffff solid;
+          border-width: 1px 2px;
+          font-weight: 700;
+          font-size: 16px;
+          color: #ffffff;
+        }
+
+        &.menu {
+          display: flex;
+          align-items: center;
+          pointer-events: none;
+          .menu-burger {
+            margin-top: -5px;
+            font-size: 40px;
+          }
+          .menu-text{
+            height: 100%;
+            padding-left: 5px;
+          }
+        }
+
+        .question-mark-icon {
+          width: 16px;
+          height: 16px;
+          margin-right: 4px;
+        }
+
         @include respond-to(phonePortrait, phoneLandscape, tabletPortrait) {
           &.menu {
+            display: flex;
+            pointer-events: initial;
             width: 40px;
+            justify-content: flex-end;
             .menu-text {
               display: none;
             }
@@ -56,23 +106,36 @@
             display: none;
           }
         }
-
-        &.left {
-          border: #ffffff solid;
-          border-width: 1px 2px;
-          border-radius: 6px;
-          font: 16px "Maven Pro Bold";
+      }
+      .submenu {
+        display: none;
+        position: absolute;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.5);
+        top: 100%;
+        right: 0;
+        width: 40%;
+        z-index: 1;
+        transition: .5s ease-in-out;
+        font-weight: 700;
+        font-size: 20px;
+        .submenu-item {
+          background-color: rgba(0, 0, 0, 0.5);
+          border: rgba(22, 41, 55, 0.5) solid;
+          width: 100%;
+          text-decoration: none;
+          text-align: left;
           color: #ffffff;
+          padding: 15px;
         }
-        &.help {
-          width: 120px;
+        .submenu-item:hover {
+          background-color: blueviolet;
         }
-        span {
-          font: 20px "Maven Pro Bold";
-        }
-        .menu {
-          top: 50%;
-        }
+      }
+
+      @include respond-to(phonePortrait, phoneLandscape, tabletPortrait) {
+        padding: 0 0 0 10px;
       }
     }
 
@@ -81,51 +144,97 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 20px 0;
+      flex-grow: 1;
+      margin-top: 30px;
       height: 100%;
-      .search_btn {
+      .search-btn {
         border: rgb(255, 81, 81) solid;
         border-radius: 6px;
         background-color: rgb(255, 81, 81);
-        left: 598px;
-        top: 536px;
-        width: 274px;
+        width: 290px;
         height: 70px;
-        z-index: 177;
         align-self: center;
-        font: 18px "Maven Pro Bold"
-      }
+        font-weight: 700;
+        font-size: 18px;
+        color: #fff;
+        &:hover {
+          background-color: rgba(255, 255, 255, .3);
+          transition: 1.5s background-color;
+        }
 
+        @include respond-to(tabletLandscape) {
+          width: 250px;
+          height: 90px;
+        }
+        @include respond-to(tabletPortrait) {
+          width: 200px;
+          height: 65px;
+          font-size: 17px;
+        }
+        @include respond-to(phoneLandscape) {
+          width: 170px;
+          height: 50px;
+          font-size: 14px;
+        }
+        @include respond-to(phonePortrait) {
+          width: 140px;
+          height: 35px;
+          font-size: 12px;
+        }
+      }
       .heading-content-item {
         margin: 10px 0;
         text-align: center;
       }
       .big {
-        font: bold 80px "Maven Pro Black";
+        font-weight: 900;
+        font-size: 80px;
         color: aquamarine;
-        @include respond-to(phonePortrait, phoneLandscape) {
-            font: bold 50px "Maven Pro Black";
-          }
+        @include respond-to(tabletLandscape) {
+          font-size: 65px;
+        }
+        @include respond-to(tabletPortrait) {
+          font-size: 45px;
+        }
+        @include respond-to(phoneLandscape) {
+          font-size: 30px;
+          margin: 3px;
+        }
+        @include respond-to(phonePortrait) {
+          font-size: 20px;
+          margin: 1px;
+        }
       }
       .medium {
-        font: bold 58px "Maven Pro Black";
+        font-weight: 900;
+        font-size: 58px;
         color: #ffffff;
-        @include respond-to(phonePortrait, phoneLandscape) {
-          font: bold 35px "Maven Pro Black";
+        @include respond-to(tabletPortrait) {
+          font-size: 35px;
+        }
+        @include respond-to(phoneLandscape) {
+          font-size: 30px;
+          margin: 3px
+        }
+        @include respond-to(phonePortrait) {
+          font-size: 18px;
+          margin: 1px
         }
       }
       .small {
-        font: 24px "Maven Pro Bold";
+        font-size: 26px;
         color: #ffffff;
         text-align: center;
         @include respond-to(phonePortrait, phoneLandscape) {
-          font: 16px "Maven Pro Bold";
+          font-size: 16px;
+          margin: 3px;
         }
-        span {
-          font: bold 26px "Maven Pro Regular";
+        div {
+          font-weight: 700;
+          font-size: 26px;
           color: aquamarine;
           @include respond-to(phonePortrait, phoneLandscape) {
-            font: bold 18px "Maven Pro Regular"
+            font-size: 16px;
           }
         }
       }

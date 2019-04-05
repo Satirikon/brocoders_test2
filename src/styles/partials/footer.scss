@@ -15,27 +15,33 @@
   .social {
     display: flex;
     flex-direction: column;
-    font: bold 22px "Maven Pro Regular";
+    font-weight: 700;
+    font-size: 22px;
     padding-top: 20px;
     .footer-logo{
-      width: 200px;
+      width: 274px;
       align-self: center;
     }
     .icons {
       display: flex;
       flex-direction: row;
-      margin-top: 5%;
+      margin-top: 10px;
       @include respond-to(phonePortrait, phoneLandscape) {
         justify-content: center;
       }
       .social-icons {
         width: 20px;
         height: 20px;
-        margin-left: 5%;
+        margin-left: 10px;
+        &:hover {
+          background-color: rgba(255, 255, 255, .3);
+          transition: 1.5s background-color;
+        }
       }
     }
     .social-text {
-      font: 14px "Maven Pro Bold";
+      font-size: 14px;
+      font-weight: 400;
       color: #85959B;
       @include respond-to(phonePortrait, phoneLandscape) {
         text-align: center;
@@ -50,17 +56,24 @@
     .footer-col {
       display: flex;
       flex-direction: column;
-      font: 16px "Maven Pro Bold";
+      font-size: 16px;
       color: #85959B;
       width: 22%;
+      margin-left: 10px;
 
       .title-footer {
-        font: bold 22px "Maven Pro Regular";
+        font-weight: 700;
+        font-size: 22px;
         color: #ffffff;
         margin-bottom: 10px;
+        @include respond-to(tabletPortrait) {
+          font-size: 16px;
+        }
       }
       .contacts-item {
         margin-bottom: 10px;
+        color: #ffffff;
+        text-decoration: none;
       }
     }
 
@@ -72,6 +85,9 @@
         text-align: center;
         margin-bottom: 15px;
       }
+    }
+    @include respond-to(tabletPortrait) {
+      font-size: 14px;
     }
   }
 }

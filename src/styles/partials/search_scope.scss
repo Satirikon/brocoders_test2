@@ -1,11 +1,22 @@
+@import "../media";
+
 .search-scope {
-  padding: 2% 0 2% 0;
+  padding: 25px 0 25px 0;
   background-color: rgb(223, 240, 240);
-  text-align: center;
-  font: 18px "Maven Pro Black";
+  justify-content: center;
+  font-weight: 500;
+  font-size: 18px;
   a {
     color: cyan;
     text-decoration: underline;
-    margin-left: .5%;
+    margin-left: 5px;
+    font-weight: 700;
+    font-size: 18px;
+  }
+  a:visited{
+    color: blueviolet;
+  }
+  @include respond-to(phonePortrait, phoneLandscape, tabletPortrait){
+    text-align: center;
   }
 }

@@ -2,7 +2,8 @@
 
 .specialists {
   text-align: center;
-  font: bold 36px 'Maven Pro Black', serif;
+  font-weight: 900;
+  font-size: 36px;
   color: rgb(11, 42, 55);
   flex-direction: column;
   margin: 100px 0 130px 0;
@@ -22,14 +23,45 @@
       .service-type {
         display: flex;
         flex-direction: column;
+        &.img{
+         background: white no-repeat center ;
+          background-size: cover;
+          width: 130px;
+          height: 130px;
+          &.specialist1{
+            background-image: url("../img/specialists_1.png");
+          }
+          &.specialist2{
+            background-image: url("../img/specialists_2.png");
+          }
+          &.specialist3{
+            background-image: url("../img/specialists_3.png");
+          }
+          &.specialist4{
+            background-image: url("../img/specialists_4.png");
+          }
+        }
         &.middle {
-          font: bold 22px 'Maven Pro Regular';
+          font-weight: 700;
+          font-size: 22px;
           margin: 40px 0 20px 0;
-          flex-grow: 1
+          min-height: 60px;
+          @include respond-to(phonePortrait, phoneLandscape, tabletPortrait) {
+            font-weight: 700;
+            font-size: 18px;
+          }
         }
 
         &.small {
-          font: 16px 'Maven Pro Bold';
+        display: flex;
+          flex-direction: column;
+          align-content: flex-start;
+          flex-grow: 1;
+          font-size: 16px;
+          font-weight: 400;
+          @include respond-to(phonePortrait, phoneLandscape, tabletPortrait) {
+            font-size: 14px;
+          }
         }
       }
     }

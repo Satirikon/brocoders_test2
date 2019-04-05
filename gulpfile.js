@@ -7,31 +7,36 @@ const gulp = require('gulp'),
   rigger = require('gulp-rigger'),
   cssmin = require('gulp-clean-css'),
   imagemin = require('gulp-imagemin'),
+  svgmin = require('gulp-svgmin'),
   pngquant = require('imagemin-pngquant'),
   browserSync = require("browser-sync"),
   del = require('del'),
   concat = require('gulp-concat'),
-  gulpCopy = require('gulp-copy'),
+  minify = require('gulp-minify'),
   reload = browserSync.reload;
 
 const path = {
-  build: { //Тут мы укажем куда складывать готовые после сборки файлы
+  build: {
     html: './build/',
     css: './build/css/',
     img: './build/img/',
-    fonts: './build/fonts/'
+    fonts: './build/fonts/',
+    js: './build/js/'
   },
-  src: { //Пути откуда брать исходники
-    html: './src/index.html', //Синтаксис src/*.html говорит gulp что мы хотим взять все файлы с расширением .html
+  src: {
+    html: './src/index.html',
     style: './src/styles/**/*.scss',
-    img: './src/img/**/*.*', //Синтаксис img/**/*.* означает - взять все файлы всех расширений из папки и из вложенных каталогов
-    fonts: './src/fonts/**/*.*'
+    img: './src/img/**/*.png',
+    svg: './src/img/**/*.svg',
+    fonts: './src/fonts/**/*.*',
+    js: './src/js/**/*.*'
   },
-  watch: { //Тут мы укажем, за изменением каких файлов мы хотим наблюдать
+  watch: {
     html: './src/**/*.html',
     style: './src/styles/**/*.scss',
     img: './src/img/**/*.*',
-    fonts: './src/fonts/**/*.*'
+    fonts: './src/fonts/**/*.*',
+    js: './src/js/**/*.*'
   },
   clean: './build'
 };
@@ -60,7 +65,7 @@ const buildStyle = ()=> {
     .pipe(reload({stream: true}));
 };
 
-const buildImg = ()=> {
+const buildImg = () => {
   return gulp.src(path.src.img) //Выберем наши картинки
     .pipe(imagemin({ //Сожмем их
       progressive: true,
@@ -72,16 +77,24 @@ const buildImg = ()=> {
     .pipe(reload({stream: true}));
 };
 
-const copyFonts = () => {
-  return gulp.src(path.src.fonts)
-    .pipe(gulpCopy('.'))
-    .pipe(gulp.dest(path.build.fonts));
+const buildSvg = () => {
+  return gulp.src(path.src.svg)
+    .pipe(svgmin())
+    .pipe(gulp.dest(path.build.img))
+    .pipe(reload({stream: true}));
+};
+
+const buildJs = () => {
+  return gulp.src(path.src.js)
+    .pipe(minify())
+    .pipe(gulp.dest(path.build.js));
 };
 
 const watcher = ()=> {
   gulp.watch(path.watch.html, buildHtml );
   gulp.watch(path.watch.style, buildStyle);
   gulp.watch(path.watch.img, buildImg);
+  gulp.watch(path.watch.js, buildJs);
   return Promise.resolve();
 };
 
@@ -100,5 +113,5 @@ const webserver = ()=> {
 };
 
 
-const build = gulp.series(clean, gulp.parallel(buildHtml, buildImg, buildStyle, copyFonts), webserver, watcher);
+const build = gulp.series(clean, gulp.parallel(buildHtml, buildImg, buildSvg, buildStyle, buildJs), webserver, watcher);
 module.exports.default = build;
